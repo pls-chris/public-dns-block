@@ -1,0 +1,21 @@
+# allowed_dns.txt
+#
+# DNS servers listed here will be EXCLUDED from the block list.
+# Use this when your organization relies on a public DNS server
+# as its upstream resolver — blocking it would break your own DNS.
+#
+# Format: one IPv4 address per line.
+# Comments above an IP are used as the exclusion reason
+# and will appear at the top of nameservers.txt.
+#
+# Example:
+#
+# Corporate upstream resolver (Cloudflare)
+# 1.1.1.1
+# 1.0.0.1
+#
+# Branch office DNS (Google)
+# 8.8.8.8
+
+# --- Add your allowed servers below ---
+

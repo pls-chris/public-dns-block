@@ -12,9 +12,45 @@ A hardcoded set of well-known providers (Google, Cloudflare, Quad9, AdGuard, Mul
 
 ## Files
 
-- `nameservers.txt` — One IPv4 address per line, sorted. Import into your firewall as a URL Table alias.
+- `nameservers.txt` — One IPv4 address per line, sorted. Import into your firewall as a URL Table alias. Excluded servers appear as comments at the top.
+- `allowed_dns.txt` — DNS servers to exclude from blocking (your organization's upstream resolvers).
+- `well_known_providers.txt` — Extra DNS provider IPs to always include in the block list.
 - `doh_dot_providers.txt` — Well-known DoH/DoT provider IPs (subset, for reference).
 - `stats.txt` — Per-country breakdown from the last scrape.
+
+## Corporate / multi-site usage
+
+If your organization uses a public DNS server as its upstream resolver (e.g. your Pi-hole forwards to 8.8.8.8), you need to exclude it from the block list — otherwise you block your own DNS.
+
+Edit `allowed_dns.txt` and add the IPs with a comment explaining why:
+
+```
+# Corporate upstream resolver (Google)
+8.8.8.8
+8.8.4.4
+
+# Branch office DNS (Cloudflare)
+1.1.1.1
+```
+
+These IPs will be removed from `nameservers.txt` and listed at the top as comments for visibility:
+
+```
+# ============================================
+# ALLOWED DNS — excluded from blocking
+# (configured in allowed_dns.txt)
+# ============================================
+# 1.1.1.1 — Branch office DNS (Cloudflare)
+# 8.8.8.8 — Corporate upstream resolver (Google)
+# 8.8.4.4 — Corporate upstream resolver (Google)
+# ============================================
+
+1.0.0.2
+1.0.0.3
+...
+```
+
+This way anyone reviewing the firewall alias can immediately see which servers were intentionally excluded and why.
 
 ## OPNsense setup
 

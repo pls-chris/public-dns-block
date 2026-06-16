@@ -33,6 +33,7 @@ OUTPUT_DIR = Path(__file__).parent.parent
 NAMESERVERS_FILE = OUTPUT_DIR / "nameservers.txt"
 STATS_FILE = OUTPUT_DIR / "stats.txt"
 EXTRA_PROVIDERS_FILE = OUTPUT_DIR / "well_known_providers.txt"
+ALLOWED_DNS_FILE = OUTPUT_DIR / "allowed_dns.txt"
 
 # Well-known public DNS providers that should ALWAYS be blocked
 # even if the scraper misses them (DoH/DoT endpoints included)
@@ -149,6 +150,30 @@ def load_extra_providers():
             except ValueError:
                 errprint(f"  Skipping invalid IP in {EXTRA_PROVIDERS_FILE.name}: {line}")
     return extra
+
+
+def load_allowed_dns():
+    """Load IPs to exclude from blocking (servers in use by the organization)."""
+    allowed = {}  # ip -> comment
+    if not ALLOWED_DNS_FILE.exists():
+        return allowed
+    current_comment = ""
+    with open(ALLOWED_DNS_FILE) as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                current_comment = ""
+                continue
+            if line.startswith("#"):
+                current_comment = line.lstrip("# ").strip()
+                continue
+            try:
+                ip = ipaddress.ip_address(line)
+                allowed[str(ip)] = current_comment if current_comment else "in use"
+                current_comment = ""
+            except ValueError:
+                errprint(f"  Skipping invalid IP in {ALLOWED_DNS_FILE.name}: {line}")
+    return allowed
 
 
 def fetch_page(url, retries=RETRY_COUNT):
@@ -285,7 +310,18 @@ def main():
     errprint(f"Added {len(well_known_added)} well-known DNS IPs "
              f"not found in scrape")
 
-    # Step 4: Validate final list
+    # Step 4: Exclude allowed DNS servers (in use by the organization)
+    allowed = load_allowed_dns()
+    excluded = {ip: reason for ip, reason in allowed.items() if ip in all_ips}
+    all_ips -= set(allowed.keys())
+    if allowed:
+        errprint(f"\nAllowed DNS (excluded from blocking): {len(allowed)} entries, "
+                 f"{len(excluded)} matched")
+        for ip, reason in sorted(excluded.items(),
+                                 key=lambda x: ipaddress.ip_address(x[0])):
+            errprint(f"  EXCLUDED: {ip} ({reason})")
+
+    # Step 5: Validate final list
     errprint(f"\nTotal unique IPs: {len(all_ips)}")
 
     if len(all_ips) < 500:
@@ -293,19 +329,35 @@ def main():
         errprint("NOT overwriting existing file")
         sys.exit(1)
 
-    # Step 5: Write sorted output
+    # Step 6: Write sorted output
     sorted_ips = sorted(all_ips, key=lambda x: ipaddress.ip_address(x))
     with open(NAMESERVERS_FILE, "w") as f:
+        # Write excluded servers as comments at the top
+        if excluded:
+            f.write("# ============================================\n")
+            f.write("# ALLOWED DNS — excluded from blocking\n")
+            f.write("# (configured in allowed_dns.txt)\n")
+            f.write("# ============================================\n")
+            for ip in sorted(excluded.keys(),
+                             key=lambda x: ipaddress.ip_address(x)):
+                f.write(f"# {ip} — {excluded[ip]}\n")
+            f.write("# ============================================\n\n")
         for ip in sorted_ips:
             f.write(f"{ip}\n")
     errprint(f"Wrote {len(sorted_ips)} IPs to {NAMESERVERS_FILE}")
 
-    # Step 6: Write stats
+    # Step 7: Write stats
     with open(STATS_FILE, "w") as f:
         f.write(f"Total servers: {len(sorted_ips)}\n")
         f.write(f"Countries scraped: {len(country_stats)}\n")
         f.write(f"Well-known providers added: {len(well_known_added)}\n")
+        f.write(f"Excluded (allowed): {len(excluded)}\n")
         f.write(f"Source: publicdns.info\n")
+        if excluded:
+            f.write(f"\nExcluded servers:\n")
+            for ip in sorted(excluded.keys(),
+                             key=lambda x: ipaddress.ip_address(x)):
+                f.write(f"  {ip} — {excluded[ip]}\n")
         f.write(f"\nPer-country breakdown:\n")
         for cc in sorted(country_stats.keys()):
             f.write(f"  {cc.upper()}: {country_stats[cc]}\n")
