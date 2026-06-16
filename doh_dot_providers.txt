@@ -1,0 +1,136 @@
+# DoH/DoT Provider IPs — Block these on TCP/443 and TCP/853
+# to prevent DNS-over-HTTPS and DNS-over-TLS bypass
+#
+# For DoT: you can just block ALL outbound TCP/853 instead of using this list.
+# For DoH: these are the known provider IPs that serve DNS over HTTPS on port 443.
+#
+# Note: This is a best-effort list. New DoH providers or anycast ranges
+# may not be covered. Combine with DNS-level blocking of DoH hostnames.
+#
+# Last manual update: 2026-06-16
+# Sources: provider documentation, DNS lookups of DoH endpoints
+
+# Google (dns.google)
+8.8.8.8
+8.8.4.4
+
+# Cloudflare (cloudflare-dns.com / 1dot1dot1dot1.cloudflare-dns.com)
+1.1.1.1
+1.0.0.1
+1.1.1.2
+1.0.0.2
+1.1.1.3
+1.0.0.3
+
+# Quad9 (dns.quad9.net)
+9.9.9.9
+149.112.112.112
+9.9.9.10
+149.112.112.10
+9.9.9.11
+149.112.112.11
+9.9.9.12
+149.112.112.12
+
+# OpenDNS / Cisco Umbrella (doh.opendns.com)
+208.67.222.222
+208.67.220.220
+208.67.222.123
+208.67.220.123
+
+# AdGuard DNS (dns.adguard-dns.com)
+94.140.14.14
+94.140.15.15
+94.140.14.15
+94.140.15.16
+94.140.14.140
+94.140.14.141
+
+# CleanBrowsing (doh.cleanbrowsing.org)
+185.228.168.9
+185.228.169.9
+185.228.168.10
+185.228.169.11
+185.228.168.168
+185.228.169.168
+
+# Mullvad DNS (dns.mullvad.net / adblock.dns.mullvad.net)
+194.242.2.2
+194.242.2.3
+194.242.2.4
+194.242.2.5
+194.242.2.6
+194.242.2.9
+
+# NextDNS (dns.nextdns.io)
+45.90.28.0
+45.90.30.0
+
+# Control D (freedns.controld.com)
+76.76.2.0
+76.76.10.0
+76.76.2.1
+76.76.10.1
+
+# Yandex DNS
+77.88.8.8
+77.88.8.1
+77.88.8.88
+77.88.8.2
+
+# DNS.SB (doh.dns.sb)
+185.222.222.222
+45.11.45.11
+
+# LibreDNS (doh.libredns.gr)
+116.202.176.26
+
+# Digitale Gesellschaft Switzerland (dns.digitale-gesellschaft.ch)
+185.95.218.42
+185.95.218.43
+
+# Applied Privacy Austria (doh.applied-privacy.net)
+146.255.56.98
+
+# CIRA Canadian Shield (private.canadianshield.cira.ca)
+149.112.121.10
+149.112.122.10
+149.112.121.20
+149.112.122.20
+149.112.121.30
+149.112.122.30
+
+# Comss.one DNS (dns.comss.one)
+92.223.109.31
+93.115.24.204
+
+# AhaDNS (doh.la.ahadns.net / doh.nl.ahadns.net)
+5.2.75.75
+
+# DNSForge (doh.dnsforge.de)
+176.9.93.198
+176.9.1.117
+
+# Tiarap DNS (doh.tiar.app)
+174.138.29.175
+104.18.44.204
+104.18.45.204
+
+# BlahDNS
+45.91.92.121
+78.46.244.143
+
+# DNS0.eu (dns0.eu)
+193.110.81.0
+185.253.5.0
+
+# DNS4EU (dns4.eu / joindns4.eu)
+193.17.47.1
+185.12.64.1
+
+# Restena Foundation Luxembourg
+158.64.1.29
+
+# Switch DNS Switzerland
+130.59.31.248
+130.59.31.251

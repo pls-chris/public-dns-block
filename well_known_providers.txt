@@ -1,0 +1,19 @@
+# well_known_providers.txt
+# 
+# Add extra DNS provider IPs here — one per line.
+# These get merged into nameservers.txt on every scrape run,
+# even if publicdns.info doesn't list them.
+#
+# Lines starting with # are comments.
+# The hardcoded list in the scraper already covers the major providers
+# (Google, Cloudflare, Quad9, AdGuard, Mullvad, OpenDNS, etc.)
+# This file is for anything extra or niche you want to add.
+#
+# Format: one IPv4 address per line
+#
+# Example:
+# 203.0.113.53
+# 198.51.100.53
+
+# --- Add your providers below ---
+
