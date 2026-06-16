@@ -1,6 +1,7 @@
 Total servers: 41243
 Countries scraped: 218
 Well-known providers added: 40
+Excluded (allowed): 0
 Source: publicdns.info
 
 Per-country breakdown:
