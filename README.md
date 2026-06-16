@@ -71,6 +71,30 @@ pip install requests
 python public_dns_block/scrape_dns_servers.py
 ```
 
+## Adding extra providers
+
+The scraper merges IPs from two sources on top of the publicdns.info scrape:
+
+- **Hardcoded list** in `public_dns_block/scrape_dns_servers.py` — ~109 major providers (Google, Cloudflare, Quad9, etc.). These rarely need changing.
+- **`well_known_providers.txt`** — editable file at the repo root for any extra or niche providers you want to add.
+
+To add a provider, just edit `well_known_providers.txt` and add one IP per line:
+
+```
+# Niche provider X
+203.0.113.53
+198.51.100.53
+```
+
+Lines starting with `#` are comments. Commit and push — the next scheduled run (or a manual workflow trigger) will include them in `nameservers.txt`.
+
+Any IPs already found by the scrape won't be duplicated. The stats output shows how many were added from each source:
+
+```
+Well-known providers: 109 hardcoded + 2 from file
+Added 42 well-known DNS IPs not found in scrape
+```
+
 ## Data source
 
 All DNS server data comes from [publicdns.info](https://publicdns.info/) by Lab0, which probes 90,000+ resolvers and publishes ~28,000 confirmed live ones with status, reliability, and DNSSEC info.
