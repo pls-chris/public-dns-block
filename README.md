@@ -64,7 +64,7 @@ This way anyone reviewing the firewall alias can immediately see which servers w
 | Type | URL Table (IPs) |
 | Content | `https://raw.githubusercontent.com/pls-chris/public-dns-block/main/nameservers.txt` |
 | Refresh | `7` |
-| Description | All known public DNS servers — block to force Pi-hole |
+| Description | All known public DNS servers — block to force local DNS |
 
 ### 2. Create the firewall rules
 
@@ -98,7 +98,24 @@ This blocks standard DNS (53), DoH (443), DoT (853), and any other protocol to k
 
 Port 853 is used exclusively for DNS-over-TLS — nothing legitimate breaks. This catches DoT servers not in the alias.
 
-> **Rule order:** Place both rules **above** your LAN pass rules.
+**Rule 3 — Force DNS through local forwarder:**
+
+The alias blocks known public DNS servers, but a client could still send DNS queries directly to an unknown resolver that isn't in the list. To close that gap, add a rule that blocks all port 53 traffic unless it's going to or from your local DNS forwarder — this could be a Pi-hole, the firewall itself, Unbound, AdGuard Home, or any internal resolver.
+
+| Field | Value |
+|---|---|
+| Action | Block |
+| Interface | LAN |
+| Direction | in |
+| Protocol | TCP/UDP |
+| Source | ! `<your_dns_forwarder>` |
+| Destination | ! `<your_dns_forwarder>` |
+| Destination port | 53 |
+| Description | Force DNS through local forwarder only |
+
+Replace `<your_dns_forwarder>` with the IP of your internal DNS server. The `!` (invert) means: block DNS traffic from anything that isn't the forwarder, going to anything that isn't the forwarder. The forwarder itself can still reach its upstream resolvers.
+
+> **Rule order:** Place all three rules **above** your LAN pass rules.
 
 ## Running locally
 
