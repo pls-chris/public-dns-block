@@ -52,11 +52,31 @@ These IPs will be removed from `nameservers.txt` and listed at the top as commen
 
 This way anyone reviewing the firewall alias can immediately see which servers were intentionally excluded and why.
 
-## OPNsense setup
+## Firewall configuration
 
-### 1. Create the alias
+Import `nameservers.txt` as a URL-based IP list/alias in your firewall, pointed at the raw GitHub URL:
 
-**Firewall → Aliases → Add:**
+```
+https://raw.githubusercontent.com/pls-chris/public-dns-block/main/nameservers.txt
+```
+
+Set it to refresh every 7 days to stay in sync with the weekly scrape.
+
+### Required rules
+
+Three rules cover all DNS bypass vectors. Place them above your default allow/pass rules. If your network has multiple internal interfaces (VLANs, guest networks, IoT segments), apply these rules across all of them — most firewalls support a way to define a rule once and apply it to multiple interfaces rather than duplicating per interface.
+
+**Rule 1 — Block all traffic to public DNS servers.** Using the alias, block all protocols and all ports from your internal networks to the listed IPs. This covers standard DNS (53), DoH (443), DoT (853), and anything else a client might try.
+
+**Rule 2 — Block DoT globally.** Block TCP port 853 from your internal networks to all destinations. Port 853 is used exclusively for DNS-over-TLS — nothing legitimate breaks. This catches DoT servers not in the alias.
+
+**Rule 3 — Force DNS through local forwarder.** The alias blocks known public DNS servers, but a client could still send DNS queries directly to an unknown resolver that isn't in the list, or directly to an allowed public DNS server bypassing any filtering the local resolver might have. To close that gap, block all port 53 (TCP/UDP) traffic unless it's going to or from your local DNS forwarder — this could be a Pi-hole, the firewall itself, Unbound, AdGuard Home, or any internal resolver. The forwarder itself must be excluded so it can still reach its upstream.
+
+### OPNsense example
+
+If you have multiple interfaces, use **Firewall → Rules → Floating** with direction **in** and select all internal interfaces — this avoids duplicating rules per interface.
+
+**Alias:** Firewall → Aliases → Add:
 
 | Field | Value |
 |---|---|
@@ -64,58 +84,44 @@ This way anyone reviewing the firewall alias can immediately see which servers w
 | Type | URL Table (IPs) |
 | Content | `https://raw.githubusercontent.com/pls-chris/public-dns-block/main/nameservers.txt` |
 | Refresh | `7` |
-| Description | All known public DNS servers — block to force local DNS |
 
-### 2. Create the firewall rules
-
-**Rule 1 — Block all traffic to public DNS servers:**
+**Rule 1:** Firewall → Rules → LAN:
 
 | Field | Value |
 |---|---|
 | Action | Block |
-| Interface | LAN |
-| Direction | in |
 | Protocol | any |
 | Source | LAN net |
 | Destination | `PublicDNS_Servers` |
 | Destination port | any |
-| Description | Block all traffic to public DNS servers |
 
-This blocks standard DNS (53), DoH (443), DoT (853), and any other protocol to known public DNS IPs.
-
-**Rule 2 — Block DoT globally:**
+**Rule 2:**
 
 | Field | Value |
 |---|---|
 | Action | Block |
-| Interface | LAN |
-| Direction | in |
 | Protocol | TCP |
 | Source | LAN net |
 | Destination | any |
 | Destination port | 853 |
-| Description | Block DNS-over-TLS to all destinations |
 
-Port 853 is used exclusively for DNS-over-TLS — nothing legitimate breaks. This catches DoT servers not in the alias.
-
-**Rule 3 — Force DNS through local forwarder:**
-
-The alias blocks known public DNS servers, but a client could still send DNS queries directly to an unknown resolver that isn't in the list. To close that gap, add a rule that blocks all port 53 traffic unless it's going to or from your local DNS forwarder — this could be a Pi-hole, the firewall itself, Unbound, AdGuard Home, or any internal resolver.
+**Rule 3:**
 
 | Field | Value |
 |---|---|
 | Action | Block |
-| Interface | LAN |
-| Direction | in |
 | Protocol | TCP/UDP |
 | Source | ! `<your_dns_forwarder>` |
 | Destination | ! `<your_dns_forwarder>` |
 | Destination port | 53 |
-| Description | Force DNS through local forwarder only |
 
-Replace `<your_dns_forwarder>` with the IP of your internal DNS server. The `!` (invert) means: block DNS traffic from anything that isn't the forwarder, going to anything that isn't the forwarder. The forwarder itself can still reach its upstream resolvers.
+Replace `<your_dns_forwarder>` with the IP of your internal DNS server. The `!` (invert) means: block DNS traffic from anything that isn't the forwarder, going to anything that isn't the forwarder.
 
-> **Rule order:** Place all three rules **above** your LAN pass rules.
+### Notes
+
+**IPv6:** This list currently covers **IPv4 only**. If your network has no IPv6 connectivity (no IPv6 on WAN, no IPv6 address on LAN, no Router Advertisements), this is not a concern — clients cannot reach IPv6 DNS servers without IPv6 routing regardless of what they hardcode on their device. If your network does have IPv6 enabled, be aware that IPv6 DNS servers (e.g. `2001:4860:4860::8888`) are not blocked by this list and represent a potential bypass vector.
+
+**Recursive resolvers (Unbound, Knot, etc.):** This list blocks **public recursive resolvers** — servers that accept DNS queries from anyone on the internet. It does not include root servers, TLD nameservers, or authoritative nameservers, which are a different class of infrastructure. If your local resolver runs in recursive mode (e.g. Unbound talking directly to the root servers instead of forwarding to 8.8.8.8), the block list should not interfere — those servers are not cataloged as public recursive resolvers. If the recursive resolver runs on the firewall itself, firewall-originated traffic bypasses LAN rules entirely. If it runs on a separate LAN machine, make sure that machine is set as your forwarder in Rule 3. There is a small theoretical chance that an authoritative nameserver shares an IP with a public recursive resolver in the list — if you see unexpected resolution failures with a recursive setup, check your firewall logs for blocked IPs and add them to `allowed_dns.txt`.
 
 ## Running locally
 
