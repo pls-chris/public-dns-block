@@ -2,6 +2,10 @@ name: refresh-nameservers
 on:
   push:
     branches: [main]
+    paths:
+      - 'public_dns_block/**'
+      - 'well_known_providers.txt'
+      - 'allowed_dns.txt'
   schedule:
     # Every Sunday at 06:00 UTC
     - cron: "0 6 * * 0"
