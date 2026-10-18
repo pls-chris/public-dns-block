@@ -1,217 +1,218 @@
-Total servers: 33378
-Countries scraped: 210
-Well-known providers added: 48
+Total servers: 32871
+Countries scraped: 211
+Well-known providers added: 44
 Excluded (allowed): 0
 Source: publicdns.info
 
 Per-country breakdown:
   AD: 19
-  AE: 67
-  AF: 99
+  AE: 64
+  AF: 97
   AG: 18
   AI: 6
   AL: 98
-  AM: 88
-  AO: 173
-  AR: 152
+  AM: 94
+  AO: 176
+  AR: 145
   AS: 9
-  AT: 105
-  AU: 265
+  AT: 102
+  AU: 264
   AW: 7
   AX: 11
-  AZ: 116
-  BA: 91
+  AZ: 112
+  BA: 90
   BB: 40
-  BD: 577
-  BE: 151
-  BF: 100
-  BG: 130
-  BH: 115
-  BI: 32
-  BJ: 103
+  BD: 585
+  BE: 150
+  BF: 98
+  BG: 124
+  BH: 113
+  BI: 30
+  BJ: 105
   BL: 10
   BN: 33
-  BO: 110
+  BO: 109
   BQ: 13
-  BR: 479
+  BR: 457
   BS: 57
   BT: 57
   BW: 116
   BY: 130
-  BZ: 149
-  CA: 817
+  BZ: 147
+  CA: 806
   CD: 88
   CF: 4
-  CG: 64
-  CH: 143
-  CI: 92
+  CG: 60
+  CH: 140
+  CI: 94
   CK: 8
-  CL: 78
-  CM: 95
-  CN: 177
-  CO: 270
+  CL: 71
+  CM: 93
+  CN: 180
+  CO: 251
   CR: 123
-  CU: 34
-  CV: 30
+  CU: 32
+  CV: 32
   CW: 38
-  CY: 142
-  CZ: 183
-  DE: 1052
+  CY: 144
+  CZ: 179
+  DE: 1027
   DK: 161
   DM: 12
-  DO: 96
-  DZ: 111
-  EC: 178
+  DO: 94
+  DZ: 110
+  EC: 176
   EE: 215
   EG: 64
-  ES: 182
+  ES: 178
   ET: 19
-  FI: 151
-  FJ: 43
-  FK: 1
+  FI: 150
+  FJ: 45
+  FK: 3
   FO: 18
-  FR: 1488
+  FR: 1472
   GA: 24
-  GB: 688
+  GB: 678
   GD: 13
-  GE: 50
+  GE: 47
   GF: 45
-  GH: 180
-  GI: 54
+  GH: 176
+  GI: 53
   GL: 10
-  GM: 24
-  GN: 32
-  GP: 56
-  GQ: 41
-  GR: 81
-  GT: 125
-  GU: 36
+  GM: 23
+  GN: 29
+  GP: 62
+  GQ: 39
+  GR: 77
+  GT: 126
+  GU: 35
   GW: 7
-  GY: 35
-  HK: 285
-  HN: 99
+  GY: 33
+  HK: 273
+  HN: 103
   HR: 61
-  HT: 37
-  HU: 101
-  ID: 241
-  IE: 167
-  IL: 67
-  IN: 265
-  IQ: 90
-  IR: 189
+  HT: 36
+  HU: 100
+  ID: 239
+  IE: 166
+  IL: 65
+  IN: 261
+  IQ: 91
+  IR: 185
   IS: 224
-  IT: 249
-  JM: 76
-  JO: 155
-  JP: 278
-  KE: 116
-  KG: 105
-  KH: 175
-  KM: 7
-  KR: 249
-  KW: 174
-  KZ: 124
-  LA: 124
-  LB: 102
-  LC: 16
-  LI: 117
-  LK: 68
-  LS: 37
-  LT: 115
+  IT: 252
+  JM: 75
+  JO: 149
+  JP: 271
+  KE: 115
+  KG: 103
+  KH: 171
+  KM: 8
+  KR: 239
+  KW: 173
+  KZ: 122
+  LA: 127
+  LB: 101
+  LC: 15
+  LI: 116
+  LK: 69
+  LS: 35
+  LT: 111
   LU: 217
   LV: 73
-  LY: 105
-  MA: 89
+  LY: 107
+  MA: 91
   MC: 14
-  MD: 40
-  ME: 69
-  MF: 4
+  MD: 44
+  ME: 63
+  MF: 5
   MG: 28
   MK: 221
   ML: 66
-  MM: 224
-  MN: 119
-  MO: 35
-  MQ: 61
-  MR: 24
-  MT: 86
-  MU: 101
-  MV: 53
-  MW: 85
-  MX: 334
-  MY: 130
-  MZ: 121
-  NA: 68
-  NC: 82
-  NE: 43
+  MM: 219
+  MN: 120
+  MO: 37
+  MQ: 62
+  MR: 23
+  MT: 87
+  MU: 100
+  MV: 52
+  MW: 80
+  MX: 311
+  MY: 127
+  MZ: 118
+  NA: 64
+  NC: 84
+  NE: 35
   NF: 6
-  NG: 96
-  NI: 168
-  NL: 604
-  NO: 88
-  NP: 198
-  NZ: 135
+  NG: 99
+  NI: 167
+  NL: 607
+  NO: 89
+  NP: 196
+  NZ: 134
   OM: 125
-  PA: 97
-  PE: 126
+  PA: 90
+  PE: 125
   PF: 28
-  PG: 96
-  PH: 200
-  PK: 60
+  PG: 95
+  PH: 191
+  PK: 56
   PL: 321
   PR: 95
-  PS: 82
-  PT: 68
-  PY: 107
-  QA: 117
-  RE: 91
-  RO: 153
-  RS: 96
-  RU: 1224
-  RW: 98
-  SA: 72
-  SB: 18
-  SC: 161
-  SD: 29
-  SE: 274
-  SG: 350
-  SI: 144
-  SK: 78
+  PS: 79
+  PT: 66
+  PY: 98
+  QA: 113
+  RE: 92
+  RO: 154
+  RS: 87
+  RU: 1196
+  RW: 97
+  SA: 73
+  SB: 19
+  SC: 154
+  SD: 28
+  SE: 264
+  SG: 344
+  SI: 145
+  SK: 76
   SL: 13
   SM: 31
   SN: 62
-  SO: 33
-  SR: 38
-  SS: 25
-  SV: 195
-  SY: 11
-  SZ: 32
+  SO: 34
+  SR: 39
+  SS: 26
+  SV: 197
+  SY: 12
+  SZ: 29
   TC: 5
   TD: 11
-  TG: 46
-  TH: 165
-  TJ: 124
+  TG: 45
+  TH: 170
+  TJ: 120
   TL: 35
-  TM: 15
-  TN: 68
-  TR: 110
-  TT: 97
-  TW: 186
-  TZ: 221
-  UA: 184
-  UG: 181
-  US: 6555
-  UY: 113
-  UZ: 128
-  VC: 3
-  VE: 57
+  TM: 14
+  TN: 70
+  TO: 19
+  TR: 108
+  TT: 98
+  TW: 179
+  TZ: 216
+  UA: 174
+  UG: 185
+  US: 6405
+  UY: 117
+  UZ: 126
+  VC: 1
+  VE: 59
   VG: 98
-  VI: 17
-  VN: 130
+  VI: 16
+  VN: 127
   VU: 30
-  XK: 93
-  YE: 11
+  XK: 92
+  YE: 10
   YT: 1
   ZA: 419
-  ZM: 64
+  ZM: 62
   ZW: 110
