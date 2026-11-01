@@ -1,218 +1,217 @@
-Total servers: 32871
-Countries scraped: 211
-Well-known providers added: 44
+Total servers: 31987
+Countries scraped: 210
+Well-known providers added: 46
 Excluded (allowed): 0
 Source: publicdns.info
 
 Per-country breakdown:
   AD: 19
-  AE: 64
-  AF: 97
-  AG: 18
+  AE: 63
+  AF: 100
+  AG: 16
   AI: 6
-  AL: 98
+  AL: 90
   AM: 94
-  AO: 176
+  AO: 178
   AR: 145
   AS: 9
-  AT: 102
-  AU: 264
+  AT: 98
+  AU: 251
   AW: 7
   AX: 11
-  AZ: 112
+  AZ: 113
   BA: 90
   BB: 40
-  BD: 585
-  BE: 150
-  BF: 98
-  BG: 124
-  BH: 113
-  BI: 30
-  BJ: 105
-  BL: 10
-  BN: 33
-  BO: 109
+  BD: 554
+  BE: 142
+  BF: 97
+  BG: 133
+  BH: 111
+  BI: 31
+  BJ: 104
+  BL: 9
+  BN: 30
+  BO: 102
   BQ: 13
-  BR: 457
-  BS: 57
-  BT: 57
-  BW: 116
-  BY: 130
-  BZ: 147
-  CA: 806
-  CD: 88
+  BR: 452
+  BS: 56
+  BT: 56
+  BW: 110
+  BY: 126
+  BZ: 148
+  CA: 781
+  CD: 84
   CF: 4
-  CG: 60
-  CH: 140
-  CI: 94
-  CK: 8
-  CL: 71
-  CM: 93
-  CN: 180
-  CO: 251
-  CR: 123
-  CU: 32
-  CV: 32
-  CW: 38
-  CY: 144
-  CZ: 179
-  DE: 1027
-  DK: 161
+  CG: 62
+  CH: 134
+  CI: 92
+  CK: 7
+  CL: 72
+  CM: 91
+  CN: 179
+  CO: 268
+  CR: 121
+  CU: 24
+  CV: 33
+  CW: 36
+  CY: 146
+  CZ: 168
+  DE: 977
+  DK: 158
   DM: 12
-  DO: 94
-  DZ: 110
-  EC: 176
+  DO: 95
+  DZ: 107
+  EC: 177
   EE: 215
-  EG: 64
-  ES: 178
-  ET: 19
-  FI: 150
-  FJ: 45
+  EG: 66
+  ES: 179
+  ET: 18
+  FI: 149
+  FJ: 43
   FK: 3
-  FO: 18
-  FR: 1472
-  GA: 24
-  GB: 678
+  FO: 17
+  FR: 1423
+  GA: 21
+  GB: 662
   GD: 13
-  GE: 47
+  GE: 55
   GF: 45
   GH: 176
-  GI: 53
-  GL: 10
+  GI: 51
+  GL: 9
   GM: 23
-  GN: 29
-  GP: 62
+  GN: 31
+  GP: 61
   GQ: 39
-  GR: 77
-  GT: 126
-  GU: 35
+  GR: 72
+  GT: 119
+  GU: 37
   GW: 7
-  GY: 33
-  HK: 273
-  HN: 103
-  HR: 61
-  HT: 36
+  GY: 35
+  HK: 276
+  HN: 108
+  HR: 62
+  HT: 35
   HU: 100
-  ID: 239
-  IE: 166
+  ID: 237
+  IE: 158
   IL: 65
-  IN: 261
-  IQ: 91
-  IR: 185
+  IN: 253
+  IQ: 86
+  IR: 165
   IS: 224
-  IT: 252
-  JM: 75
-  JO: 149
-  JP: 271
-  KE: 115
-  KG: 103
-  KH: 171
-  KM: 8
-  KR: 239
+  IT: 238
+  JM: 73
+  JO: 147
+  JP: 254
+  KE: 118
+  KG: 100
+  KH: 167
+  KM: 9
+  KR: 236
   KW: 173
-  KZ: 122
-  LA: 127
-  LB: 101
-  LC: 15
-  LI: 116
+  KZ: 121
+  LA: 119
+  LB: 78
+  LC: 16
+  LI: 109
   LK: 69
-  LS: 35
-  LT: 111
-  LU: 217
-  LV: 73
-  LY: 107
+  LS: 36
+  LT: 104
+  LU: 216
+  LV: 74
+  LY: 92
   MA: 91
   MC: 14
-  MD: 44
-  ME: 63
+  MD: 45
+  ME: 67
   MF: 5
-  MG: 28
-  MK: 221
-  ML: 66
-  MM: 219
-  MN: 120
-  MO: 37
-  MQ: 62
-  MR: 23
+  MG: 27
+  MK: 218
+  ML: 64
+  MM: 216
+  MN: 119
+  MO: 36
+  MQ: 59
+  MR: 25
   MT: 87
-  MU: 100
-  MV: 52
-  MW: 80
-  MX: 311
-  MY: 127
-  MZ: 118
-  NA: 64
-  NC: 84
-  NE: 35
+  MU: 99
+  MV: 49
+  MW: 82
+  MX: 305
+  MY: 124
+  MZ: 120
+  NA: 62
+  NC: 81
+  NE: 43
   NF: 6
-  NG: 99
+  NG: 80
   NI: 167
-  NL: 607
-  NO: 89
-  NP: 196
-  NZ: 134
-  OM: 125
-  PA: 90
+  NL: 598
+  NO: 86
+  NP: 184
+  NZ: 133
+  OM: 126
+  PA: 82
   PE: 125
   PF: 28
   PG: 95
-  PH: 191
-  PK: 56
-  PL: 321
-  PR: 95
-  PS: 79
-  PT: 66
-  PY: 98
+  PH: 203
+  PK: 52
+  PL: 308
+  PR: 89
+  PS: 81
+  PT: 67
+  PY: 103
   QA: 113
-  RE: 92
-  RO: 154
-  RS: 87
-  RU: 1196
-  RW: 97
-  SA: 73
-  SB: 19
-  SC: 154
-  SD: 28
-  SE: 264
-  SG: 344
-  SI: 145
-  SK: 76
+  RE: 90
+  RO: 150
+  RS: 92
+  RU: 1210
+  RW: 96
+  SA: 70
+  SB: 18
+  SC: 153
+  SD: 29
+  SE: 260
+  SG: 316
+  SI: 143
+  SK: 74
   SL: 13
   SM: 31
   SN: 62
-  SO: 34
+  SO: 33
   SR: 39
-  SS: 26
-  SV: 197
-  SY: 12
+  SS: 25
+  SV: 199
+  SY: 10
   SZ: 29
   TC: 5
   TD: 11
   TG: 45
-  TH: 170
-  TJ: 120
-  TL: 35
-  TM: 14
-  TN: 70
+  TH: 159
+  TJ: 122
+  TL: 31
+  TN: 72
   TO: 19
-  TR: 108
-  TT: 98
+  TR: 103
+  TT: 101
   TW: 179
-  TZ: 216
+  TZ: 209
   UA: 174
-  UG: 185
-  US: 6405
-  UY: 117
-  UZ: 126
+  UG: 167
+  US: 6065
+  UY: 111
+  UZ: 122
   VC: 1
-  VE: 59
-  VG: 98
-  VI: 16
-  VN: 127
+  VE: 55
+  VG: 97
+  VI: 17
+  VN: 132
   VU: 30
-  XK: 92
-  YE: 10
+  XK: 89
+  YE: 12
   YT: 1
-  ZA: 419
+  ZA: 422
   ZM: 62
-  ZW: 110
+  ZW: 104
